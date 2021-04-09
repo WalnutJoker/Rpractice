@@ -1,0 +1,120 @@
+---
+title: "Notes"
+author: "Yuege Zhang"
+date: "4/9/2021"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Types of Data Analysis
+1. Descriptive   
+Goal: Describe or summarize a set of data  
+- Early analysis when receive new data   
+- Generate simple sumamries about the samples and their mesurements  
+- Not forgeneralziing the results of the analysis to a larger population or trying to make conclusions  
+e.g: mean, median, mode, range, sd, variance, scatter plot, histogram etc.    
+2. Exploratory  
+Goal: Examine the data and find relationships that weren't previously known  
+- Explore how different variables might be related  
+- Useful for discovering new connections  
+- Help to formulate hypotheses and drive the design of future sudies and data collection    
+e.g: correlation   
+Tell us the there exits relationship, not the cause.
+3. Inferential    
+Goal: Use a relatively small sample of data to say something about the population at large   
+- Provide your estimate of the variable for the population and provide your uncertainty about your estimate   
+- Ability to accurately infer information about the larger population depends heavily on sampling scheme    
+4. Predictive
+Goal: Use current and historical data to make predictions about future data  
+- Accuracy in predictions is dependent on measuring the right variables   
+- Many ways to build up prediction model with some being better or worse for specific cases   
+5. Causal
+Goal: See what happens to one variable when we manipulate another variable  
+- Gold Standard in data analysis  
+- Often applied to the results of randomized studies that were designed to identify causation   
+- Usually analyzed in aggregate and observed relationships are usually average effects   
+6. Mechanistic
+Goal: Understand the exact changes in variables that lead to exact changes in other variables
+- Applied to simple situations or those that are nicely modelded by deterministic equations   
+- Commonly applied to physical or engineering sciences   
+- Often the only noise in the data is measurement error   
+
+
+# Experimental Design
+Steps:
+1. Formulate your question  
+2. Designing your experiment
+3. Identify problems and sources of error
+Confounder: 第三干扰因素
+4. Collect the data   
+Methods:
+-Blinded: Subjects don't know which group(Control,Treatment) they are in. 
+  -Randomization & Replication to remove confounders
+
+# Read and Output Data
+```{r}
+x= "aaa"
+y= data.frame(a=1,b="3a")
+dump(c("x","y"),file="data.R")
+rm(x,y)
+source("data.R")
+y
+x
+```
+
+# Subsetting Lists
+```{r}
+x=list(foo=1:4,bar=0.6)
+str(x)
+str(x[1])
+str(x[[1]])
+str(x$foo)
+```
+
+# Subsetting a Matrix
+```{r}
+x=matrix(1:6,2,3)
+str(x)
+str(x[1,2])
+str(x[1,2,drop=FALSE])
+```
+
+# Partial Matching
+```{r}
+x=list(dfsefsef=1:5)
+x$d
+x[["d"]]
+x[["d",exact=FALSE]]
+
+```
+
+# Removing NA Values
+```{r}
+x=c(1,2,NA,4,NA,5)
+bad=is.na(x)
+x[!bad]
+y=c("a","b",NA,"d","e",NA)
+good=complete.cases(x,y)
+good
+x[good]
+y[good]
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
